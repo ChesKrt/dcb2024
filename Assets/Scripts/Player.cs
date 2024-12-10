@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     public float timingStep;
     public AudioClip stepFbx;
     public float speed;
-    public float speedRun;
-    public float timeRun;
 
     // Start is called before the first frame update
     void Start()
@@ -35,15 +33,16 @@ public class Player : MonoBehaviour
                 transform.Translate(Vector3.forward * Time.deltaTime * speed);
             }
 
-            if (Input.GetKey(KeyCode.W) && Input.GetKeyDown(KeyCode.LeftShift))
+            if(Input.GetKeyDown(KeyCode.LeftShift))
             {
-                timingStep += Time.deltaTime;
-                if (timingStep > timeRun)
-                {
-                    walkFx.PlayOneShot(stepFbx);
-                    timingStep = 0;
-                }
-                transform.Translate(Vector3.forward * Time.deltaTime * speedRun);
+                speed += 3.5f;
+                timeStep -= 0.3f;
+            }
+
+            if(Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                speed -= 3.5f;
+                timeStep += 0.3f;
             }
 
             if (Input.GetKeyUp(KeyCode.W))
