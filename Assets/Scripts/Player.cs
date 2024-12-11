@@ -11,46 +11,46 @@ public class Player : MonoBehaviour
     public float timingStep;
     public AudioClip stepFbx;
     public float speed;
+    Animator _mAnim;
 
     // Start is called before the first frame update
     void Start()
     {
         
         walkFx = GetComponent<AudioSource>();
+        _mAnim = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (walkFx != null)
-        {
+          if (Input.GetKey(KeyCode.W))
+          {
+             AudioStep();
+             _mAnim.SetBool("Walk", true);
+             transform.Translate(Vector3.forward * Time.deltaTime * speed);
+          }
 
-            if (Input.GetKey(KeyCode.W))
-            {
-                AudioStep();
-                transform.Translate(Vector3.forward * Time.deltaTime * speed);
-            }
+          if(Input.GetKeyDown(KeyCode.LeftShift))
+          {
+             speed += 3.5f;
+             timeStep -= 0.3f;
+             _mAnim.SetBool("Run", true);
+          }
 
-            if(Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                speed += 3.5f;
-                timeStep -= 0.3f;
-            }
+          if(Input.GetKeyUp(KeyCode.LeftShift))
+          {
+            speed -= 3.5f;
+            timeStep += 0.3f;
+            _mAnim.SetBool("Run", false);
+          }
 
-            if(Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                speed -= 3.5f;
-                timeStep += 0.3f;
-            }
-
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                timingStep = 0;
-            }
-        }
-
+         if (Input.GetKeyUp(KeyCode.W))
+         {
+            timingStep = 0;
+            _mAnim.SetBool("Walk", false);
+         }
     }
 
     void AudioStep()
