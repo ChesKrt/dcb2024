@@ -32,12 +32,19 @@ public class Player : MonoBehaviour
              transform.Translate(Vector3.forward * Time.deltaTime * speed);
           }
 
-          if(Input.GetKeyDown(KeyCode.LeftShift))
-          {
+        if (Input.GetKey(KeyCode.S))
+        {
+            AudioStep();
+            _mAnim.SetBool("BWalk", true);
+            transform.Translate(-Vector3.forward * Time.deltaTime * speed);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
              speed += 3.5f;
              timeStep -= 0.3f;
              _mAnim.SetBool("Run", true);
-          }
+        }
 
           if(Input.GetKeyUp(KeyCode.LeftShift))
           {
@@ -51,6 +58,12 @@ public class Player : MonoBehaviour
             timingStep = 0;
             _mAnim.SetBool("Walk", false);
          }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            timingStep = 0;
+            _mAnim.SetBool("BWalk", false);
+        }
     }
 
     void AudioStep()
