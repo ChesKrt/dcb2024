@@ -4,51 +4,110 @@ using UnityEngine;
 
 public class PokemonStats
 {
-    public string pkName = "";
-    public int life;
-    public int attack;
-    public int defense;
-    public int speed;
-    public int specialAttack;
-    public int specialDefense;
+    private string pkName = "";
+    private int life;
+    private int attack;
+    private int defense;
+    private int speed;
+    private int specialAttack;
+    private int specialDefense;
 
+    AttackStats attack1;
+    AttackStats attack2;
+    AttackStats attack3;
+    AttackStats attack4;
 
-    public PokemonStats()
+    public PokemonStats(string pkName, int life, int attack, int defense, int speed, int specialAttack, int specialDefense, int power1, int power2, int power3, int power4)
     {
+        this.pkName = pkName;
+        this.life = life;
+        this.attack = attack;
+        this.defense = defense;
+        this.speed = speed;
+        this.specialAttack = specialAttack;
+        this.specialDefense = specialDefense;
 
+        attack1 = new AttackStats(power1);
+        attack2 = new AttackStats(power2);
+        attack3 = new AttackStats(power3);
+        attack4 = new AttackStats(power4);
     }
 
-    public PokemonStats(string _pkName, int _life, int _attack, int _defense, int _speed)
+    public void TotalSpecialAttack(int attackPlayer, int defenseRival)
     {
-        pkName = _pkName;
-        life = _life;
-        attack = _attack;
-        defense = _defense;
-        speed = _speed;
+        specialAttack = attackPlayer + defenseRival;
     }
 
-    /*public void Pikachu()
+    /*public string GetName()
     {
-        pkName = "Pikachu";
-        life = 35;
-        attack = 55;
-        defense = 40;
-        speed = 90;
+        return pkName;
     }
 
-    public void Charmander()
+    public void SetName(string pkName)
     {
-        pkName = "Charmander";
-        life = 39;
-        attack = 52;
-        defense = 43;
-        speed = 65;
-    }
-
-    public void Bulbasaur()
-    {
-        pkName = "Bulbasaur";
+        this.pkName = pkName;
     }*/
-    
+
+    public string PkName
+    {
+        get { return pkName; }
+        set {  pkName = value; }
+    }
+
+    /*public int GetLife()
+    {
+        return life;
+    }*/
+
+    public int Life
+    {
+        get { return life; }
+        set { life = value; }
+    }
+
+    /*public int GetAttack()
+    {
+        return attack;
+    }*/
+
+    public int Attack
+    {
+        get { return attack; }
+        set { attack = value; }
+    }
+
+    /*public int GetDefense()
+    {
+        return defense;
+    }*/
+
+    public int Defense
+    {
+        get { return defense; }
+        set { defense = value; }
+    }
+
+    /*public int GetSpeed()
+    {
+        return speed;
+    }*/
+
+    public int Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
+    public int SpecialAttack
+    {
+        get { return specialAttack; }
+        set { specialAttack = value; }
+    }
+
+    public int SpecialDefense
+    {
+        get { return specialDefense; }
+        set { specialDefense = value; }
+    }
 
 }
