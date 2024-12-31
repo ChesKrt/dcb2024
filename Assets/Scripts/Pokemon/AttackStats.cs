@@ -5,10 +5,12 @@ using UnityEngine;
 public class AttackStats
 {
     private int power;
+    private string name;
 
-    public AttackStats(int power)
+    public AttackStats(int power, string name)
     {
         this.power = power;
+        this.name = name;
     }
 
     public int Power
@@ -17,4 +19,9 @@ public class AttackStats
         set { power = value; }
     }
 
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
 }

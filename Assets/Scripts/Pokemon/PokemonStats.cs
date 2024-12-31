@@ -11,13 +11,14 @@ public class PokemonStats
     private int speed;
     private int specialAttack;
     private int specialDefense;
+    private int pokedexNumber;
 
     AttackStats attack1;
     AttackStats attack2;
     AttackStats attack3;
     AttackStats attack4;
 
-    public PokemonStats(string pkName, int life, int attack, int defense, int speed, int specialAttack, int specialDefense, int power1, int power2, int power3, int power4)
+    public PokemonStats(string pkName, int life, int attack, int defense, int speed, int specialAttack, int specialDefense, int power1, int power2, int power3, int power4, int pokedexNumber)
     {
         this.pkName = pkName;
         this.life = life;
@@ -26,11 +27,13 @@ public class PokemonStats
         this.speed = speed;
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
+        this.pokedexNumber = pokedexNumber;
 
-        attack1 = new AttackStats(power1);
-        attack2 = new AttackStats(power2);
-        attack3 = new AttackStats(power3);
-        attack4 = new AttackStats(power4);
+        attack1 = new AttackStats(power1, "Placaje");
+        attack2 = new AttackStats(power2, "Ataque rapido");
+        attack3 = new AttackStats(power3, "Arañazo");
+        attack4 = new AttackStats(power4, "Doble ataque");
+        this.pokedexNumber = pokedexNumber;
     }
 
     public void TotalSpecialAttack(int attackPlayer, int defenseRival)
@@ -54,21 +57,11 @@ public class PokemonStats
         set {  pkName = value; }
     }
 
-    /*public int GetLife()
-    {
-        return life;
-    }*/
-
     public int Life
     {
         get { return life; }
         set { life = value; }
     }
-
-    /*public int GetAttack()
-    {
-        return attack;
-    }*/
 
     public int Attack
     {
@@ -76,21 +69,11 @@ public class PokemonStats
         set { attack = value; }
     }
 
-    /*public int GetDefense()
-    {
-        return defense;
-    }*/
-
     public int Defense
     {
         get { return defense; }
         set { defense = value; }
     }
-
-    /*public int GetSpeed()
-    {
-        return speed;
-    }*/
 
     public int Speed
     {
@@ -108,6 +91,60 @@ public class PokemonStats
     {
         get { return specialDefense; }
         set { specialDefense = value; }
+    }
+
+    public int Attack1
+    {
+        get { return attack1.Power; }
+        set { attack1.Power = value; }
+    }
+
+    public int Attack2
+    {
+        get { return attack2.Power; }
+        set { attack1.Power = value; }
+    }
+
+    public int Attack3
+    {
+        get { return attack3.Power; }
+        set { attack1.Power = value; }
+    }
+
+    public int Attack4
+    {
+        get { return attack4.Power; }
+        set { attack1.Power = value; }
+    }
+
+    public string Name1
+    {
+        get { return attack1.Name; }
+        set { attack1.Name = value; }
+    }
+
+    public string Name2
+    {
+        get { return attack2.Name; }
+        set { attack2.Name = value; }
+    }
+
+    public string Name3
+    {
+        get { return attack3.Name; }
+        set { attack3.Name = value; }
+    }
+
+    public string Name4
+    {
+        get { return attack4.Name; }
+        set { attack4.Name = value; }
+    }
+
+    public int PokdedexNumber
+    {
+        get { return pokedexNumber; }
+        set { pokedexNumber = value; }
     }
 
 }
